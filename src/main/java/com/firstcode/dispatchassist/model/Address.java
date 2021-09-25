@@ -3,6 +3,7 @@ package com.firstcode.dispatchassist.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Objects;
 
 @Getter
@@ -10,9 +11,24 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 public class Address extends Base {
+
+    @Builder
+    public Address(Long id, Date modified, Date created, String type, String city, String street,
+                   String number, String longitude, String latitude, String time, String date, Load load) {
+        super(id, modified, created);
+        this.type = type;
+        this.city = city;
+        this.street = street;
+        this.number = number;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.time = time;
+        this.date = date;
+        this.load = load;
+    }
+
     private String type;
     private String city;
     private String street;

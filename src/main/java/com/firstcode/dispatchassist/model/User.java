@@ -16,20 +16,16 @@ import java.util.Objects;
 @AllArgsConstructor
 @Entity
 public class User extends Person {
+
     @Builder
-    public User(Long id, Date modified, Date created, String firstName, String lastName, String phoneNumber, String email, List<Driver> drivers, String color, String avatar, String startingDate, String birthDate) {
-        this.setId(id);
-        this.setCreated(created);
-        this.setModified(modified);
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
-        this.setPhoneNumber(phoneNumber);
-        this.setEmail(email);
-        this.drivers = drivers;
+    public User(Long id, Date modified, Date created, String firstName, String lastName, String phoneNumber,
+                String email, String color, String avatar, String startingDate, String birthDate, List<Driver> drivers) {
+        super(id, modified, created, firstName, lastName, phoneNumber, email);
         this.color = color;
         this.avatar = avatar;
         this.startingDate = startingDate;
         this.birthDate = birthDate;
+        this.drivers = drivers;
     }
 
     private String color;

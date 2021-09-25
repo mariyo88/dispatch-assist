@@ -14,22 +14,18 @@ import java.util.Objects;
 @AllArgsConstructor
 @Entity
 public class Driver extends Person {
+
     @Builder
-    public Driver(Long id, Date modified, Date created, String firstName, String lastName, String phoneNumber, String email, User user, String profileLink, String loadConformations, String dedicatedDispatcher, String placeOfResidence, String schedule, List<Load> loads) {
-        this.setId(id);
-        this.setCreated(created);
-        this.setModified(modified);
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
-        this.setPhoneNumber(phoneNumber);
-        this.setEmail(email);
-        this.user = user;
+    public Driver(Long id, Date modified, Date created, String firstName, String lastName, String phoneNumber,
+                  String email, String profileLink, String loadConformations, String dedicatedDispatcher, String placeOfResidence, String schedule, List<Load> loads, User user) {
+        super(id, modified, created, firstName, lastName, phoneNumber, email);
         this.profileLink = profileLink;
         this.loadConformations = loadConformations;
         this.dedicatedDispatcher = dedicatedDispatcher;
         this.placeOfResidence = placeOfResidence;
         this.schedule = schedule;
         this.loads = loads;
+        this.user = user;
     }
 
     private String profileLink;

@@ -3,6 +3,7 @@ package com.firstcode.dispatchassist.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,9 +12,22 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 public class Load extends Base {
+
+    @Builder
+    public Load(Long id, Date modified, Date created, String date, String pickupAddressTimeAndDate, String totalMileage,
+                String currentDistanceFromDelivery, Status driverStatus, List<Address> addresses, Driver driver) {
+        super(id, modified, created);
+        this.date = date;
+        this.pickupAddressTimeAndDate = pickupAddressTimeAndDate;
+        this.totalMileage = totalMileage;
+        this.currentDistanceFromDelivery = currentDistanceFromDelivery;
+        this.driverStatus = driverStatus;
+        this.addresses = addresses;
+        this.driver = driver;
+    }
+
     private String date;
     private String pickupAddressTimeAndDate;
     private String totalMileage;
