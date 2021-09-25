@@ -25,6 +25,9 @@ public class Address {
     private String time;
     private String date;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Load load;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
