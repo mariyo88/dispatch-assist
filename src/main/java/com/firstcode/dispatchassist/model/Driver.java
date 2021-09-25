@@ -3,6 +3,7 @@ package com.firstcode.dispatchassist.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -24,6 +25,9 @@ public class Driver {
     private String dedicatedDispatcher;
     private String placeOfResidence;
     private String schedule;
+
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "driver")
+    private List<Load> loads;
 
     @Override
     public boolean equals(Object o) {

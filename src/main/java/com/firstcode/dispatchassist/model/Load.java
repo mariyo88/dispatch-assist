@@ -2,9 +2,8 @@ package com.firstcode.dispatchassist.model;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -22,7 +21,13 @@ public class Load {
     private String pickupAddressTimeAndDate;
     private String totalMileage;
     private String currentDistanceFromDelivery;
-    private String driverStatus;
+    private Status driverStatus;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "load")
+    private List<Address> addresses;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Driver driver;
 
     @Override
     public boolean equals(Object o) {
