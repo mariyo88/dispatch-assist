@@ -1,9 +1,6 @@
 package com.firstcode.dispatchassist.model;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,11 +11,17 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@Builder
 @Entity
 public class Load {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
+    private String date;
+    private String pickupAddressTimeAndDate;
+    private String totalMileage;
+    private String currentDistanceFromDelivery;
+    private String driverStatus;
 
     @Override
     public boolean equals(Object o) {

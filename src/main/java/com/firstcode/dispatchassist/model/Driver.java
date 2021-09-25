@@ -1,9 +1,6 @@
 package com.firstcode.dispatchassist.model;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -12,11 +9,20 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@Builder
 @Entity
 public class Driver {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+    private String profileLink;
+    private String loadConformations;
+    private String dedicatedDispatcher;
+    private String placeOfResidence;
+    private String schedule;
 
     @Override
     public boolean equals(Object o) {

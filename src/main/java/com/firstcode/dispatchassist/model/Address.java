@@ -1,9 +1,6 @@
 package com.firstcode.dispatchassist.model;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -12,11 +9,20 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@Builder
 @Entity
 public class Address {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
+    private String type;
+    private String city;
+    private String street;
+    private String number;
+    private String longitude;
+    private String latitude;
+    private String time;
+    private String date;
 
     @Override
     public boolean equals(Object o) {

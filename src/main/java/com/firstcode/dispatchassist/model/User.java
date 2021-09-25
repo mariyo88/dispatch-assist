@@ -1,9 +1,6 @@
 package com.firstcode.dispatchassist.model;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,11 +11,21 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@Builder
 @Entity
 public class User {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
+    private String firstName;
+    private String lastName;
+    private String driverList;
+    private String email;
+    private String phoneNumber;
+    private String color;
+    private String avatar;
+    private String startingDate;
+    private String birthDate;
 
     @Override
     public boolean equals(Object o) {
