@@ -15,7 +15,7 @@ import java.util.Objects;
 @Entity
 public class Driver extends Person {
     @Builder
-    public Driver(Long id, Date modified, Date created, String firstName, String lastName, String phoneNumber, String email, String profileLink, String loadConformations, String dedicatedDispatcher, String placeOfResidence, String schedule, List<Load> loads) {
+    public Driver(Long id, Date modified, Date created, String firstName, String lastName, String phoneNumber, String email, User user, String profileLink, String loadConformations, String dedicatedDispatcher, String placeOfResidence, String schedule, List<Load> loads) {
         this.setId(id);
         this.setCreated(created);
         this.setModified(modified);
@@ -23,6 +23,7 @@ public class Driver extends Person {
         this.setLastName(lastName);
         this.setPhoneNumber(phoneNumber);
         this.setEmail(email);
+        this.user = user;
         this.profileLink = profileLink;
         this.loadConformations = loadConformations;
         this.dedicatedDispatcher = dedicatedDispatcher;
@@ -40,6 +41,10 @@ public class Driver extends Person {
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "driver")
     @ToString.Exclude
     private List<Load> loads;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
+    private User user;
 
     @Override
     public boolean equals(Object o) {
