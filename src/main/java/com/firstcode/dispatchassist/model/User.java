@@ -2,9 +2,8 @@ package com.firstcode.dispatchassist.model;
 
 import lombok.*;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.util.Date;
 import java.util.Objects;
 
 @Getter
@@ -12,17 +11,25 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
-public class User {
-    @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
-    private String firstName;
-    private String lastName;
+public class User extends Person {
+    @Builder
+    public User(Long id, Date modified, Date created, String firstName, String lastName, String phoneNumber, String email, String driverList, String color, String avatar, String startingDate, String birthDate) {
+        this.setId(id);
+        this.setCreated(created);
+        this.setModified(modified);
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        this.setPhoneNumber(phoneNumber);
+        this.setEmail(email);
+        this.driverList = driverList;
+        this.color = color;
+        this.avatar = avatar;
+        this.startingDate = startingDate;
+        this.birthDate = birthDate;
+    }
+
     private String driverList;
-    private String email;
-    private String phoneNumber;
     private String color;
     private String avatar;
     private String startingDate;
@@ -33,11 +40,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id);
+        return Objects.equals(getId(), user.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(getId());
     }
 }

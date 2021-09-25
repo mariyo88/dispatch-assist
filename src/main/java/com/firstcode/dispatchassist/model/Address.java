@@ -12,10 +12,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Address {
-    @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class Address extends Base {
     private String type;
     private String city;
     private String street;
@@ -34,11 +31,11 @@ public class Address {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Address address = (Address) o;
-        return Objects.equals(id, address.id);
+        return Objects.equals(getId(), address.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(getId());
     }
 }

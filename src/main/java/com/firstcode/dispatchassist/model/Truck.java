@@ -12,10 +12,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Truck {
-    @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class Truck extends Base {
     private String truckId;
     private String trailerNumber;
     private String truckLocation;
@@ -27,11 +24,11 @@ public class Truck {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Truck truck = (Truck) o;
-        return Objects.equals(id, truck.id);
+        return Objects.equals(getId(), truck.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(getId());
     }
 }

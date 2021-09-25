@@ -13,10 +13,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Load {
-    @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class Load extends Base {
     private String date;
     private String pickupAddressTimeAndDate;
     private String totalMileage;
@@ -36,11 +33,11 @@ public class Load {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Load load = (Load) o;
-        return Objects.equals(id, load.id);
+        return Objects.equals(getId(), load.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(getId());
     }
 }
