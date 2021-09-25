@@ -24,9 +24,11 @@ public class Load {
     private Status driverStatus;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "load")
+    @ToString.Exclude
     private List<Address> addresses;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
     private Driver driver;
 
     @Override

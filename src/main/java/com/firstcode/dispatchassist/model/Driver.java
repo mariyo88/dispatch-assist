@@ -27,6 +27,7 @@ public class Driver {
     private String schedule;
 
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "driver")
+    @ToString.Exclude
     private List<Load> loads;
 
     @Override
