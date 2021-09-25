@@ -26,6 +26,7 @@ public class Address {
     private String date;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
     private Load load;
 
     @Override
