@@ -17,22 +17,21 @@ public class Driver extends Person {
 
     @Builder
     public Driver(Long id, Date modified, Date created, String firstName, String lastName, String phoneNumber,
-                  String email, String profileLink, String loadConformations, String dedicatedDispatcher, String placeOfResidence, String schedule, List<Load> loads, User user) {
+                  String email, String link, String conformations, String residence, String schedule, List<Load> loads, User user) {
         super(id, modified, created, firstName, lastName, phoneNumber, email);
-        this.profileLink = profileLink;
-        this.loadConformations = loadConformations;
-        this.dedicatedDispatcher = dedicatedDispatcher;
-        this.placeOfResidence = placeOfResidence;
+        this.link = link;
+        this.conformations = conformations;
+        this.residence = residence;
         this.schedule = schedule;
         this.loads = loads;
         this.user = user;
     }
 
-    private String profileLink;
-    private String loadConformations;
-    private String dedicatedDispatcher;
-    private String placeOfResidence;
+    private String link;
+    private String conformations;
+    private String residence;
     private String schedule;
+    private DriverStatus status;
 
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "driver")
     @ToString.Exclude
@@ -41,6 +40,9 @@ public class Driver extends Person {
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
     private User user;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Truck truck;
 
     @Override
     public boolean equals(Object o) {

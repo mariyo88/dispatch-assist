@@ -1,6 +1,6 @@
 package com.firstcode.dispatchassist.model;
 
-public enum Status {
+public enum DriverStatus {
     OFF_DUTY,
     EMPTY,
     GOING_TO_SHIPPER,

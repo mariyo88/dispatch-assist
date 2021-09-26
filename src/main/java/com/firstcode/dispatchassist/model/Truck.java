@@ -3,6 +3,7 @@ package com.firstcode.dispatchassist.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Objects;
 
 @Getter
@@ -10,14 +11,29 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 public class Truck extends Base {
+
+    @Builder
+    public Truck(Long id, Date modified, Date created, String truckId, String trailerNumber, String truckLocation,
+                 String model, boolean insurance, Driver driver) {
+        super(id, modified, created);
+        this.truckId = truckId;
+        this.trailerNumber = trailerNumber;
+        this.truckLocation = truckLocation;
+        this.model = model;
+        this.insurance = insurance;
+        this.driver = driver;
+    }
+
     private String truckId;
     private String trailerNumber;
     private String truckLocation;
     private String model;
     private boolean insurance;
+
+    @OneToOne
+    private Driver driver;
 
     @Override
     public boolean equals(Object o) {

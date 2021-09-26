@@ -16,23 +16,21 @@ import java.util.Objects;
 public class Load extends Base {
 
     @Builder
-    public Load(Long id, Date modified, Date created, String date, String pickupAddressTimeAndDate, String totalMileage,
-                String currentDistanceFromDelivery, Status driverStatus, List<Address> addresses, Driver driver) {
+    public Load(Long id, Date modified, Date created, Date date, Double mileage, Double distance,
+                LoadStatus status, List<Address> addresses, Driver driver) {
         super(id, modified, created);
         this.date = date;
-        this.pickupAddressTimeAndDate = pickupAddressTimeAndDate;
-        this.totalMileage = totalMileage;
-        this.currentDistanceFromDelivery = currentDistanceFromDelivery;
-        this.driverStatus = driverStatus;
+        this.mileage = mileage;
+        this.distance = distance;
+        this.status = status;
         this.addresses = addresses;
         this.driver = driver;
     }
 
-    private String date;
-    private String pickupAddressTimeAndDate;
-    private String totalMileage;
-    private String currentDistanceFromDelivery;
-    private Status driverStatus;
+    private Date date;
+    private Double mileage;
+    private Double distance;
+    private LoadStatus status;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "load")
     @ToString.Exclude
