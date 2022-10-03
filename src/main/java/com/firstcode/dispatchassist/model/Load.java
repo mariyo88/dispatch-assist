@@ -16,8 +16,8 @@ import java.util.Objects;
 public class Load extends Base {
 
     @Builder
-    public Load(Long id, Date modified, Date created, Date date, Double mileage, Double distance,
-                LoadStatus status, List<Address> addresses, Driver driver) {
+    public Load(Long id, Date modified, Date created, String date, Double mileage, Double distance,
+                LoadStatus status, List<Address> addresses, Driver driver, String client) {
         super(id, modified, created);
         this.date = date;
         this.mileage = mileage;
@@ -25,12 +25,14 @@ public class Load extends Base {
         this.status = status;
         this.addresses = addresses;
         this.driver = driver;
+        this.client = client;
     }
 
-    private Date date;
+    private String date;
     private Double mileage;
     private Double distance;
     private LoadStatus status;
+    private String client;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "load")
     @ToString.Exclude

@@ -33,7 +33,7 @@ public class Driver extends Person {
     private String schedule;
     private DriverStatus status;
 
-    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "driver")
+    @OneToMany(mappedBy = "driver")
     @ToString.Exclude
     private List<Load> loads;
 
@@ -41,7 +41,8 @@ public class Driver extends Person {
     @ToString.Exclude
     private User user;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
     private Truck truck;
 
     @Override

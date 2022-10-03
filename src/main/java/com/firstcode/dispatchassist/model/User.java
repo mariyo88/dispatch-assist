@@ -2,16 +2,15 @@ package com.firstcode.dispatchassist.model;
 
 import lombok.*;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -19,7 +18,7 @@ public class User extends Person {
 
     @Builder
     public User(Long id, Date modified, Date created, String firstName, String lastName, String phoneNumber,
-                String email, String color, String avatar, String startingDate, String birthDate, List<Driver> drivers) {
+                String email, String color, Byte[] avatar, String startingDate, String birthDate, List<Driver> drivers) {
         super(id, modified, created, firstName, lastName, phoneNumber, email);
         this.color = color;
         this.avatar = avatar;
@@ -28,14 +27,32 @@ public class User extends Person {
         this.drivers = drivers;
     }
 
+    @Size(min = 4, message = "Your username length must be grater then 4.")
+    private String username;
+
+    private String password;
+    private boolean enabled;
+    private String address;
+    private String address2;
     private String color;
-    private String avatar;
+
+    @Lob
+    private Byte[] avatar;
     private String startingDate;
     private String birthDate;
 
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "user")
-    @ToString.Exclude
     private List<Driver> drivers;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "color='" + color + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", startingDate='" + startingDate + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                "} " + super.toString();
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -19,4 +19,19 @@ public class LoadServiceImpl implements LoadService {
     public List<Load> findAll() {
         return repository.findAll();
     }
+
+    @Override
+    public Load findById(Long id) {
+        return repository.findById(id).get();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        repository.deleteById(id);
+    }
+
+    @Override
+    public Load save(Load load) {
+        return repository.save(load);
+    }
 }

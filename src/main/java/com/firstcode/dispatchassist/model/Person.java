@@ -3,6 +3,7 @@ package com.firstcode.dispatchassist.model;
 import lombok.*;
 
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Getter
@@ -22,6 +23,7 @@ public class Person extends Base {
         this.email = email;
     }
 
+    @Size(min = 3, max = 50)
     private String firstName;
     private String lastName;
     private String phoneNumber;

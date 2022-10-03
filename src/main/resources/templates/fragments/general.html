@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="headerfiles">
+    <meta charset="UTF-8"/>
+    <title>Dispatcher assist :: Template</title>
+</head>
+<body>
+<div th:fragment="drivers" class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+        <tr>
+            <th class="col col-striped">Action</th>
+            <th class="col col-sm-2">Status</th>
+            <th class="col col-sm-2">First name</th>
+            <th class="col col-sm-2">Last name</th>
+            <th class="col col-sm-2">Phone</th>
+            <th class="col col-sm-2">Email</th>
+            <th class="col col-sm-2">Modified</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--/*@thymesVar id="drivers" type="com.firstcode.dispatchassist.model.Paged<com.firstcode.dispatchassist.model.Driver>"*/-->
+        <!--/*@thymesVar id="driver" type="com.firstcode.dispatchassist.model.Driver"*/-->
+        <tr th:each="driver : ${drivers.page}">
+            <td>
+                <a th:href="@{/driver/update(id=${driver.id})}"
+                   class="btn btn-outline-primary btn-sm rounded-pill">Open</a>
+            </td>
+            <td th:switch="${driver.status.ordinal()}">
+                <span th:case="0">
+                    <span class="badge rounded-pill bg-info">Off duty</span>
+                </span>
+                <span th:case="1">
+                    <span class="badge rounded-pill bg-danger">Empty</span>
+                </span>
+                <span th:case="2">
+                    <span class="badge rounded-pill bg-secondary">Going to shipper</span>
+                </span>
+                <span th:case="3">
+                    <span class="badge rounded-pill bg-warning">At the shipper</span>
+                </span>
+                <span th:case="4">
+                    <span class="badge rounded-pill bg-success">Loaded and running</span>
+                </span>
+                <span th:case="5">
+                    <span class="badge rounded-pill bg-primary">Break</span>
+                </span>
+            </td>
+            <td th:text="${driver.firstName}">First name</td>
+            <td th:text="${driver.lastName}">Last name</td>
+            <td th:text="${driver.phoneNumber}">Phone number</td>
+            <td th:text="${driver.email}">Email</td>
+            <td th:text="${#dates.format(driver.modified, 'dd-MM-yyyy HH:mm')}">09-01-2017,11:08</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

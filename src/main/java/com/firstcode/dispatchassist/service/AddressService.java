@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface AddressService {
     List<Address> findAll();
+
+    void save(Address address);
 }

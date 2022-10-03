@@ -32,7 +32,8 @@ public class Truck extends Base {
     private String model;
     private boolean insurance;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
     private Driver driver;
 
     @Override

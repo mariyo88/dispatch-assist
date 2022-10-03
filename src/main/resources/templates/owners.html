@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'owners')}" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<br>
+<h4 class="mt-5">Find Drivers</h4>
+<div class="accordion mt-3 mb-3" id="accordionExample">
+    <div class="accordion-item">
+        <h4 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Filters
+            </button>
+        </h4>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+             data-bs-parent="#accordionExample" style="">
+            <div class="accordion-body">
+                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse
+                plugin adds the appropriate classes that we use to style each element. These classes control the overall
+                appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with
+                custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go
+                within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="fragments/general.html :: drivers"></div>
+<div>
+    <nav aria-label="Page navigation" class="pagination pagination-sm justify-content-center">
+        <ul class="pagination" th:if="${drivers.page.totalPages > 1}">
+            <li class="page-item" th:classappend="${!drivers.paging.isPrevEnabled()? 'disabled' : ''}">
+                <a class="page-link" th:href="@{'/owner/?pageNumber=' + ${drivers.paging.pageNumber - 1}}"
+                   tabindex="-1">Previous</a>
+            </li>
+            <th:block th:each="item : ${drivers.paging.getItems()}">
+                <!--/*@thymesVar id="item" type="com.firstcode.dispatchassist.model.PageItem"*/-->
+                <li class="page-item"
+                    th:classappend="${item.index == drivers.paging.pageNumber? 'active' : ''}"
+                    th:if="${item.pageItemType.name() == 'PAGE'}">
+                    <a class="page-link" th:href="@{'/owner/?pageNumber=' + ${item.index}}"
+                       th:text="${item.index}"></a>
+                </li>
+                <li class="page-item disabled" th:if="${item.pageItemType.name() == 'DOTS'}">
+                    <a class="page-link" href="#">...</a>
+                </li>
+            </th:block>
+            <li class="page-item" th:classappend="${!drivers.paging.isNextEnabled()? 'disabled' : ''}">
+                <a class="page-link"
+                   th:href="@{'/owner/?pageNumber=' + ${drivers.paging.pageNumber + 1}}">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<br>
+</body>
+</html>

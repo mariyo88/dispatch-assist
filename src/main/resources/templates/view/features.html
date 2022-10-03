@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      th:replace="~{fragments/layout :: layout (~{::body},'features')}" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="User registration form">
+    <meta name="author" content="Super Mario">
+    <title>Features · Dispatcher Assist v1.0</title>
+</head>
+<body>
+<div class="container">
+    <br>
+    <div class="container mt-5" id="icon-grid">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            <div class="col d-flex align-items-start" sec:authorize="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+                    <use xlink:href="#user"></use>
+                </svg>
+                <div>
+                    <h4 class="fw-bold mb-0">Users</h4>
+                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    <a th:href="@{user}" class="btn btn-outline-primary btn-sm">
+                        <svg width="16" height="16" fill="currentColor" class="bi bi-people-fill">
+                            <use xlink:href="#user"></use>
+                        </svg>
+                        Open
+                    </a>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+                    <use xlink:href="#grid"></use>
+                </svg>
+                <div>
+                    <h4 class="fw-bold mb-0">Drivers</h4>
+                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    <a th:href="@{owner}" class="btn btn-outline-primary btn-sm">
+                        <svg width="16" height="16" fill="currentColor" class="bi bi-people-fill">
+                            <use xlink:href="#grid"></use>
+                        </svg>
+                        Open
+                    </a>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+                    <use xlink:href="#calendar3"></use>
+                </svg>
+                <div>
+                    <h4 class="fw-bold mb-0">Scheduled</h4>
+                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    <a href="#" th:href="@{scheduled}" class="btn btn-outline-primary btn-sm">
+                        <svg width="16" height="16" fill="currentColor" class="bi bi-people-fill">
+                            <use xlink:href="#calendar3"></use>
+                        </svg>
+                        Open
+                    </a>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+                    <use xlink:href="#geo-fill"></use>
+                </svg>
+                <div>
+                    <h4 class="fw-bold mb-0">Loads</h4>
+                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    <a href="#" th:href="@{loads}" class="btn btn-outline-primary btn-sm">
+                        <svg width="16" height="16" fill="currentColor" class="bi bi-people-fill">
+                            <use xlink:href="#geo-fill"></use>
+                        </svg>
+                        Open
+                    </a>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+                    <use xlink:href="#truck"></use>
+                </svg>
+                <div>
+                    <h4 class="fw-bold mb-0">Trucks</h4>
+                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    <a href="#" th:href="@{trucks}" class="btn btn-outline-primary btn-sm">
+                        <svg width="16" height="16" fill="currentColor" class="bi bi-people-fill">
+                            <use xlink:href="#truck"></use>
+                        </svg>
+                        Open
+                    </a>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+                    <use xlink:href="#chat-quote-fill"></use>
+                </svg>
+                <div>
+                    <h4 class="fw-bold mb-0">Messaging</h4>
+                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    <a href="#" th:href="@{messaging}" class="btn btn-outline-primary btn-sm disabled">
+                        <svg width="16" height="16" fill="currentColor" class="bi bi-people-fill">
+                            <use xlink:href="#chat-quote-fill"></use>
+                        </svg>
+                        Open
+                    </a>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+                    <use xlink:href="#cpu-fill"></use>
+                </svg>
+                <div>
+                    <h4 class="fw-bold mb-0">Reporting</h4>
+                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    <a href="#" th:href="@{reporting}" class="btn btn-outline-primary btn-sm disabled">
+                        <svg width="16" height="16" fill="currentColor" class="bi bi-people-fill">
+                            <use xlink:href="#cpu-fill"></use>
+                        </svg>
+                        Open
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

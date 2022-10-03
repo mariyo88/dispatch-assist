@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DispatchAssistApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DispatchAssistApplication.class, args);
+        SpringApplication application = new SpringApplication(DispatchAssistApplication.class);
+        application.setAdditionalProfiles("ssl");
+        application.run(args);
     }
 
 }
