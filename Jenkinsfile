@@ -1,5 +1,5 @@
 #!groovy
-@Library('halcom-jenkins-shared-lib') _
+// @Library('halcom-jenkins-shared-lib') _
 
 properties properties: [
 	[$class: 'ParametersDefinitionProperty', parameterDefinitions: [
