@@ -5,9 +5,7 @@ properties properties: [
 	[$class: 'ParametersDefinitionProperty', parameterDefinitions: [
 		[$class: 'BooleanParameterDefinition', name: 'sonar', defaultValue: false, description: 'Do sonar analysis?'],
 		[$class: 'BooleanParameterDefinition', name: 'docker', defaultValue: false, description: 'Build docker images?']
-	]],
-	[$class: 'GitLabConnectionProperty', gitLabConnection: 'Halcom'],
-	[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '10', artifactNumToKeepStr: '15', daysToKeepStr: '10', numToKeepStr: '15']]
+	]]]
 ]
 
 node ('jenkins') {
