@@ -29,7 +29,7 @@ public class Address extends Base {
         this.load = load;
     }
 
-    private Strin type;
+    private String type;
     private String city;
     private String street;
     private String number;
