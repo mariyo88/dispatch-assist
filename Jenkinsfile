@@ -8,7 +8,7 @@ properties properties: [
 	]]
 ]
 
-node ('jenkins') {
+node ('built-in') {
 	try {
 		env.JAVA_HOME = tool 'AdoptOpenJDK11'
 		env.MAVEN_OPTS='-Xss2048k'
