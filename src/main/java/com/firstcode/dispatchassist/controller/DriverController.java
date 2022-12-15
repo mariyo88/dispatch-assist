@@ -22,7 +22,7 @@ import java.util.stream.IntStream;
 @RequestMapping("/driver")
 public class DriverController {
 
-    private final DriverService service;
+    private final DriverServic service;
 
     public DriverController(DriverService service) {
         this.service = service;
