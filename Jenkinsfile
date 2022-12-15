@@ -5,7 +5,7 @@ properties properties: [
 	[$class: 'ParametersDefinitionProperty', parameterDefinitions: [
 		[$class: 'BooleanParameterDefinition', name: 'sonar', defaultValue: false, description: 'Do sonar analysis?'],
 		[$class: 'BooleanParameterDefinition', name: 'docker', defaultValue: false, description: 'Build docker images?']
-	]]]
+	]]
 ]
 
 node ('jenkins') {
